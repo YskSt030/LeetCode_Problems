@@ -19,4 +19,17 @@ The given address is a valid IPv4 address.
 
 class Solution:
     def defangIPaddr(self, address: str) -> str:
-        pass
+        ret = ''
+        for i in range(len(address)):
+            if address[i]=='.':
+                ret += '[.]'
+            else:
+                ret += address[i]
+        return ret
+
+
+if __name__=='__main__':
+    ipaddress = '192.168.0.1'
+    sol = Solution()
+    print(sol.defangIPaddr(ipaddress))
+    
