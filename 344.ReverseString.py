@@ -25,18 +25,9 @@ class Solution:
         """
         Do not return anything, modify s in-place instead.
         """
-        count = len(s)
-        count_ = 0
-        if count == 0:
-            return []
-        elif count == 1:
-            return s
-        else:
-            while count_ <= len(s)-count_-1:
-                temp = s[count_]
-                s[count_] = s[len(s)-count_-1]
-                s[len(s) - count_ - 1] = temp
-                count_ += 1
+        for i in range(len(s) // 2 ):
+            s[i], s[len(s) - 1 - i] = s[len(s) - 1 - i], s[i]
+            
 
 if __name__=='__main__':
     s_ = ['h','e','l','l','o']
