@@ -16,40 +16,33 @@ A solution set is:
 """
 
 class Solution:
-    #def threeSum(self, nums: List[int]) -> List[List[int]]:
     def threeSum(self, nums):
-        ret = []
-        posnums = [num for num in nums if num > 0]
-        posnums.sort()
-        negnums = [num for num in nums if num < 0]
-        negnums.sort()
-        iszero = 0 in nums
-        if iszero:
-            for num in posnums:
-                if -num in negnums:
-                    list_ = [-num,0,num]
-                    if not list_ in ret:
-                        ret.append(list_)
-            if len([x for x in nums if x == 0]) >= 3:
-                ret.append([0,0,0])
-
-        for i in range(len(negnums) - 1):
-            for j in range(i + 1, len(negnums)):
-                val = negnums[i] + negnums[j]
-                if -val in posnums:
-                    list_ = [negnums[i] , negnums[j], -val]
-                    if not list_ in ret:
-                        ret.append(list_)
-        for i in range(len(posnums) - 1):
-            for j in range(i + 1, len(posnums)):
-                val = posnums[i] + posnums[j]
-                if -val in negnums:
-                    list_ = [-val, posnums[i] , posnums[j]]
-                    if not list_ in ret :
-                        ret.append(list_)
-        return ret
-
+               if len(nums) < 3:
+            return []
+        elif len(nums) == 3:
+            if sum(nums) == 0:
+                return [nums]
+            else:
+                return []
+        else:
+            nums.sort()
+            ret = list()
+            for i in range(len(nums)):
+                p ,q = i + 1, len(nums) - 1
+                tgt = -nums[i]
+                if nums[i] == nums[i - 1]: continue
+                while p < q:
+                    if tgt > nums[p] + nums[q]:
+                        p += 1                    
+                    elif tgt < nums[p] + nums[q]:
+                        q -= 1
+                    else:
+                        ret.append([nums[i], nums[p], nums[q]])
+                        p += 1
+                        q -= 1
+            return ret
+            
 if __name__ == '__main__':
     sol = Solution()
-    nums = [-1, 0, 1, 2, -1, -4]
+    nums = [1,2,-2,-1]
     print(sol.threeSum(nums))
