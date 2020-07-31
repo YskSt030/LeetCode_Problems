@@ -42,7 +42,7 @@ The serialization of each level is as follows:
 [7,8,9,10,null]
 [11,12,null]
 To serialize all levels together we will add nulls in each level to signify no node connects to 
-the upper node of the previous level. The serialization becomes:
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　the upper node of the previous level. The serialization becomes:
 
 [1,2,3,4,5,6,null]
 [null,null,7,8,9,10,null]
