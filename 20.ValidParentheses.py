@@ -49,3 +49,10 @@ class Solution:
             return True
         else:
             return False
+
+            
+
+if __name__=='__main__':
+    sol = Solution()
+    s = "leEeetcode"
+    print(sol.findKthBit(5,16))
