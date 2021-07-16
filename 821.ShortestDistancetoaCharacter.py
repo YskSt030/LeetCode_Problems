@@ -44,7 +44,14 @@ class Solution:
                 for i in range(n):
                     ret.append(min(i + 1, n - i - 1))
                 return ret
-
+    #20210207 added
+    def shortestToChar(self, s: str, c: str) -> List[int]:
+        ret = [10**4 + 1] * len(s)
+        for i , x in enumerate(s):
+            if x == c:
+                for j in range(len(s)):
+                    ret[j] = min(ret[j], abs(i-j))
+        return ret
 if __name__ =='__main__':
     S = "iamagoodman"
     C = 'a'
